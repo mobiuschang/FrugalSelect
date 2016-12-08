@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const db = require('./_db.js');
 
-const Alternative = db.define('alternatives', {
+const Alternative = db.define('alternative', {
   name: {
     type: Sequelize.STRING,
     allowNull: false

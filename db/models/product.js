@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const db = require('./_db.js');
 
-const Product = db.define('products', {
+const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
