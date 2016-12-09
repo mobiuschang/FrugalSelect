@@ -1,9 +1,9 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const db = require("./_db");
+const db = require('./../index')
 
-const Review = db.define('review', {
+const Review = db.define('reviews', {
   rating: {
     type: Sequelize.INTEGER,
     allowNull: false

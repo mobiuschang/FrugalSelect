@@ -1,9 +1,9 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const db = require('./_db');
+const db = require('./../index')
 
-const Category = db.define('category', {
+const Category = db.define('categories', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,

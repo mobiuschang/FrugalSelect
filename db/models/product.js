@@ -1,9 +1,9 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const db = require('./_db.js');
+const db = require('./../index')
 
-const Product = db.define('product', {
+const Product = db.define('products', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
