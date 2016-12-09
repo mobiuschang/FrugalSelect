@@ -44,14 +44,26 @@ let seedCategories = seedModelFunc('categories');
 let seedReviews = seedModelFunc('reviews');
 let seedUsers = seedModelFunc('users');
 
+let createdProducts, createdCategories, createdReviews, createdAlternatives;
 
 db.didSync
   .then(() => db.sync({force:true}))
   .then(seedProducts)
+  .then(products => { createdProducts = products })
   .then(seedAlternatives)
+  .then(alternatives => { createdAlternatives = alternatives })
   .then(seedCategories)
+  .then(categories => { createdCategories = categories })
   .then(seedReviews)
+  .then(reviews => {createdReviews = reviews })
   .then(seedUsers)
+  .then(users => {createdUsers = users })
+  .then(() => (
+    createdProducts[0].addCategory(createdCategories[0]),
+    createdProducts[0].setAlternative(createdAlternatives[0]),
+    createdReviews[0].setProduct(createdProducts[0]),
+    createdReviews[0].setUser(createdUsers[0])
+  ))
   .then(() => console.log(chalk.yellow(`Seeded data OK`)))
   .catch(error => console.error(error))
   .finally(()=> db.close())
