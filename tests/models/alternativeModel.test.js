@@ -11,7 +11,7 @@ describe("Alternative model", () => {
   const nullNameProduct = {
     price: "10",
     description: "Very cheap watch",
-    url: "http://invicta.com/watch.html"
+    url: "http://invicta.com/watch"
   };
 
   const nullPriceProduct = {
@@ -27,16 +27,25 @@ describe("Alternative model", () => {
     url: "random test"
   };
 
+  const validAlternative = {
+    name: "Invicta watch",
+    price: "10",
+    description: "Very cheap watch",
+    url: "https://images-na.ssl-images-amazon.com/images/I"
+  };
+
+
   describe("Check alternative product validation", () => {
-    it("Reject null product name", () => {
+
+    it("Reject null alternative product name", () => {
       return Alternative.create(nullNameProduct).should.be.rejected;
     })
 
-    it("Reject null product price", () => {
+    it("Reject null alternative product price", () => {
       return Alternative.create(nullPriceProduct).should.be.rejected;
     })
 
-    it("Reject null product name", () => {
+    it("Reject null alternative product name", () => {
       return Alternative.create(invalidUrl).should.be.rejected;
     })
   })

@@ -16,7 +16,17 @@ describe(" Review model", () => {
     rating: 4
   };
 
+  const validReview = {
+    rating: 4,
+    comment: "Great product"
+  }
+
   describe("Check Review validation", () => {
+
+    it("Fulfill valid review", () => {
+      return Review.build(validReview).should.be.fuilfilled;
+    })
+
     it("Reject null Review name", () => {
       return Review.create(nullNameReview).should.be.rejected;
     })

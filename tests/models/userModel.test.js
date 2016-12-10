@@ -8,23 +8,26 @@ chai.should();
 
 
 describe(" User model", () => {
+  const validUser =  {name: "James Bonds", email: "jamesbond@gmail.com", password: "haha123"};
+
   const nullNameUser = {
     email: "thomasJefferson@gamil.com",
-    password: '1234'
+    password: 'haha1234'
   };
 
   const nullEmailUser= {
     name: "Thomas Jefferson",
-    password: '123'
+    password: 'haha123'
   };
 
   const invalidEmailUser = {
     name: "Thomas Jefferson",
     email: 'haha',
-    password: '123'
+    password: 'haha123'
   };
 
   describe("Check User validation", () => {
+
     it("Reject null User name", () => {
       return User.create(nullNameUser).should.be.rejected;
     })

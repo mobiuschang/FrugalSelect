@@ -14,7 +14,15 @@ describe("Category model", () => {
   const emptyNameCategory = {
     name: ""
   }
+
+  const validCategory = {
+    name: "watch"
+  }
   describe("Check category validation", () => {
+    it("Fulfill valid category ", () => {
+      return Category.build(validCategory).should.be.fuilfilled;
+    })
+
     it("Reject null category", () => {
       return Category.create(nullCategory).should.be.rejected;
     })
