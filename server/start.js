@@ -8,9 +8,7 @@ const db = require('../db');
 app
   .use(express.static('public'))
   .use(bodyParser.urlencoded({extended: true}))
-  .use('/products', productsRouter)
-  .use('/users', usersRouter)
-  .use((req, res) => res.status(404).end());
+  .use('/api', require('./api'))
 
 app.get('/', function(req, res){
   res.sendFile('index.html');
