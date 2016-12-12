@@ -62,7 +62,8 @@ db.didSync
     createdProducts[0].addCategory(createdCategories[0]),
     createdProducts[0].setAlternative(createdAlternatives[0]),
     createdReviews[0].setProduct(createdProducts[0]),
-    createdReviews[0].setUser(createdUsers[0])
+    createdReviews[0].setUser(createdUsers[0]),
+    createdCategories[0].addProduct(createdProducts[0])
   ))
   .then(() => console.log(chalk.yellow(`Seeded data OK`)))
   .catch(error => console.error(error))

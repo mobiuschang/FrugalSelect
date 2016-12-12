@@ -13,6 +13,7 @@ Review.belongsTo(User);
 User.hasMany(Review);
 
 Product.belongsToMany(Category, {through: "productCategories"});
+Category.hasMany(Product);
 //Currently set to one to one association. Might need one to many assoc in the future
 Alternative.belongsTo(Product);
 Product.hasOne(Alternative);

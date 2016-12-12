@@ -1,16 +1,22 @@
 const router = require('express').Router();
 const db = require('../../db');
 const Category = db.model('categories');
+const Product = db.model('products');
 module.exports = router;
 
 router.get('/', function(req, res, next) {
-  Category.findAll()
+  Category.findAll({
+    include: [Product]
+  })
   .then(categories => res.json(categories))
   .catch(next);
 })
 
 router.get('/:categoryId', function(req, res, next) {
-  Category.findById(req.params.categoryId)
+  Category.findOne({
+    where: {id: req.params.categoryId},
+    include: [Product]
+    })
   .then(category => {
     if(!category) {
       const err = Error('Category not found');
