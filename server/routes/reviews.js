@@ -28,8 +28,8 @@ router.get('/:reviewId', function(req, res, next) {
   .catch(next);
 });
 
-router.post('/createReview', (req, res, next) => {
+router.post('/addReview', function (req, res, next) {
   Review.create(req.body)
-  .then(review => res.status(201).send(product))
+  .then(review => res.status(201).send(review))
   .catch(next);
 })

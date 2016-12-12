@@ -30,8 +30,23 @@ router.get('/:productId', (req, res, next) => {
   .catch(next);
 })
 
-router.post('/createProduct', (req, res, next) => {
-  Product.create(req.body)
-  .then(product => res.status(201).json(product))
+router.post('/addProduct', (req, res, next) => {
+  Product.create({
+    rating: "1",
+    comment: 'great',
+    productId: 1,
+    userid: 1
+  })
+  .then(product => console.log('haha'))
   .catch(next);
 })
+
+router.delete('/:productId', (req, res, next) => {
+  Product.destroy({
+    where: {id: req.params.productid}
+  })
+  .then(productDeleted => {
+    res.status(204)
+  })
+  .catch(next)
+});

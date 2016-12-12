@@ -15,7 +15,7 @@ const categoriesList = [
 ]
 
 const reviewsList = [
-  {rating: "4", comment: "Really good alternative"}
+  {rating: 4, comment: "Really good alternative"}
 ]
 
 const usersList = [
