@@ -33,3 +33,10 @@ router.post('/addReview', function (req, res, next) {
   .then(review => res.status(201).send(review))
   .catch(next);
 })
+
+router.delete('/:reviewId', (req, res, next) => {
+  Review.findById(req.params.reviewId)
+  .then(foundReview => foundReview.destroy())
+  .then(() => res.sendStatus(204))
+  .catch(next);
+})

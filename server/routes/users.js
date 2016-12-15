@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:userId', function(req, res, next) {
   User.findOne({
-    id:req.params.userId,
+    where: { id:req.params.userId },
     include:[Review]
   })
   .then(user => {
@@ -27,3 +27,16 @@ router.get('/:userId', function(req, res, next) {
   })
   .catch(next);
 })
+
+router.post('/', (req, res, next) => {
+  User.create(req.body)
+  .then(createdUser => res.send(createdUser))
+  .catch(next);
+});
+
+router.delete('/:userId', (req, res, next) => {
+  User.findById(req.params.userId)
+  .then(foundUser => foundUser.destroy())
+  .then(() => res.sendStatus(204))
+  .catch(next);
+});

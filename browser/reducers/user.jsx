@@ -48,7 +48,7 @@ export const signupUser = (credentials) => dispatch => {
 }
 
 export const loginUser = (credentails) => dispatch => {
-  axios.post('/api/auth/loginUser', credentials)
+  axios.post('/api/auth/login', credentials)
   .then(res => {
     dispatch(login(res.data));
     browserHistory.push('/');

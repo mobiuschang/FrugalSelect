@@ -9,6 +9,7 @@ api
   .use('/users', require('./routes/users'))
   .use('/categories', require('./routes/categories'))
   .use('/reviews', require('./routes/reviews'))
+  .use('/auth', require('./routes/auth'))
 
 api.use((err, req, res, next) => {
   res.status(500).send(err);
