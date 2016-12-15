@@ -22,8 +22,7 @@ render(
     <Router history = { browserHistory } >
       <IndexRoute path = '/' component = { Home } onEnter = { appEnter } />
         <Route path = '/products' component = { AllProductsContainer } onEnter = {allProductEnter } />
-        <Route path='/products/:productid' component = { ProductContainer } onEnter = { productEnter }
-      </Route>
+        <Route path='/products/:productid' component = { ProductContainer } onEnter = { productEnter } />
     </Router>
   </Provider>,
   document.getElementById('main')
