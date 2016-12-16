@@ -23,7 +23,7 @@ const logout = user => ({
 });
 
 // --------------------> REDUCER <--------------------
-export default (currentUser = null, action) => {
+export default function (currentUser = null, action){
   switch (action.type) {
     case CREATE_USER:
       return action.user;
@@ -32,7 +32,7 @@ export default (currentUser = null, action) => {
     case LOGOUT_USER:
       return null;
     default:
-      return user;
+      return currentUser;
   }
 }
 

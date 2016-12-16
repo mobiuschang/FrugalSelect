@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const db = require('../../db');
-const User = db('users');
+const User = db.model('users');
 module.exports = router;
 
 router.post('/signup', (req, res, next) => {
