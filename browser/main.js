@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, IndexRedirect } from 'react-router';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
@@ -15,22 +15,22 @@ import store from './store';
 import { fetchProduct } from './reducers/product';
 import { fetchProducts } from './reducers/products';
 
+injectTapEventPlugin();
+
 const appEnter = () => {
   store.dispatch(fetchProducts());
 }
 const productEnter = (nextState) => store.dispatch(fetchProduct(nextState.params.productId));
 
-injectTapEventPlugin();
-
 render(
   <Provider store={store}>
     <MuiThemeProvider>
       <Router history = { browserHistory } >
-        <Route path = '/'>
-        <IndexRoute component = { Home } />
-            <Route path = '/products' component = { AllProductsContainer }  />
-            <Route path='/products/:productid' component = { ProductContainer } onEnter = { productEnter } />
-          </Route>
+        <Route path = '/' component = { Home } >
+          <IndexRedirect to="/products" />
+          <Route path = '/products' component={AllProductsContainer} onEnter={appEnter} />
+          <Route path='/products/:productid' component = { ProductContainer } onEnter = { productEnter } />
+        </Route>
       </Router>
     </MuiThemeProvider>
   </Provider>,

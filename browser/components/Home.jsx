@@ -3,23 +3,18 @@ import Navbar from './navbar/Navbar';
 
 import { TextField } from 'material-ui';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
+ render() {
 
-  render() {
-
-    const {children} = this.props;
     return (
       <div>
         <div>Home.jsx rendered</div>
         <Navbar />
-          { children }
+        { this.props.children }
       </div>
     )
   }
 }
 
-module.exports = Home;
+export default Home;
